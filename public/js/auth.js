@@ -23,8 +23,10 @@ miFormulario.addEventListener('submit', ev => {
       headers: { 'Content-Type': 'application/json' }
     })
     .then( resp => resp.json())
-    .then( data => {
-      console.log( data )
+    .then(( {msg, token}) => {
+      if( msg ) {
+        return console.error( msg )
+      }
     })
     .catch( err => {
       console.log(err)

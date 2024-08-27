@@ -4,64 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Identity</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .custom-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+        .google-signin {
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .signin-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .signin-divider {
+            margin: 20px 0;
+        }
+        .form-control {
+            border-radius: 20px;
+        }
+        .btn-primary {
+            width: 100%;
+            border-radius: 20px;
+        }
+    </style>
 </head>
-<body class="container">
+<body class="bg-light">
 
-    <div class="row mt-5">
-        <div class="col-sm-6">
-            <h1>Google Identity</h1>
-            <hr>
-            <button id="signout_button" style="display:none;" onclick="signOut()">Sign out</button>
+    <!-- Contenedor principal con un ancho máximo definido -->
+    <div class="container custom-container bg-white p-4 shadow rounded">
+        
+        <!-- Título centralizado de la página -->
+        <h1 class="signin-title">Bienvenido a la Autenticación</h1>
+        
+        <!-- Fila para Google Identity y formulario de inicio de sesión -->
+        <div class="row">
+            
+            <!-- Columna de Google Identity -->
+            <div class="col-sm-6">
+                <h2>Google Identity</h2>
+                <hr class="signin-divider">
+                
+                <!-- Contenedor del botón de Google con ancho reducido -->
+                <div class="google-signin">
+                    <div id="g_id_onload"
+                        data-client_id="251330704353-dmkklc844rvisi6ogfio4isfdaj6v81s.apps.googleusercontent.com"
+                        data-context="signin"
+                        data-ux_mode="popup"
+                        data-login_uri="http://localhost:8081/api/auth/google"
+                        data-auto_prompt="false">
+                    </div>
+                    
+                    <div id="buttonDiv" class="g_id_signin"
+                        data-type="standard"
+                        data-shape="pill"
+                        data-theme="outline"
+                        data-text="signin_with"
+                        data-size="large"
+                        data-locale="es"
+                        data-logo_alignment="left">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna de formulario manual -->
+            <div class="col-sm-6">
+                <h2>Login Manual</h2>
+                <hr class="signin-divider">
+                <form>
+                    <input type="text" name="correo" class="form-control mb-3" placeholder="Correo"/>
+                    <input type="password" name="password" class="form-control mb-3" placeholder="Password"/>
+                    <button class="btn btn-primary">
+                        Ingresar
+                    </button>
+                </form>
+            </div>
         </div>
-
-        <div class="col-sm-6">
-
-        </div>
     </div>
 
-
-
-    <div id="g_id_onload"
-        data-client_id="251330704353-dmkklc844rvisi6ogfio4isfdaj6v81s.apps.googleusercontent.com"
-        data-context="signin"
-        data-ux_mode="popup"
-        data-login_uri="http://localhost:8081/api/auth/google"
-        data-auto_prompt="false">
-    </div>
-
-    <div id="buttonDiv" class="g_id_signin"
-        data-type="standard"
-        data-shape="pill"
-        data-theme="outline"
-        data-text="signin_with"
-        data-size="large"
-        data-locale="es"
-        data-logo_alignment="left">
-    </div> 
-
-    <div class="col-sm-6">
-        <h1>Login manual</h1>
-        <hr>
-
-        <form>
-            <input type="text" name="correo" class="form-control mb-2" placeholder="Correo"/>
-            <input type="text" name="password" class="form-control mb-2" placeholder="Password"/>
-
-            <button class="btn btn-primarty">
-                Ingresar
-            </button>
-        </form>
-
-
-    </div>
-
-
-
-
-
+    <!-- Scripts necesarios para Google Identity -->
     <script src="https://accounts.google.com/gsi/client" async defer></script>
-    
     <script src="./js/auth.js"></script>
 </body>
 </html>
