@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Identity</title>
+
+</head>
+<body class="container">
+
+    <div class="row mt-5">
+        <div class="col-sm-6">
+            <h1>Google Identity</h1>
+            <hr>
+            <button id="signout_button" style="display:none;" onclick="signOut()">Sign out</button>
+        </div>
+
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+
+    <div id="g_id_onload"
+        data-client_id="251330704353-dmkklc844rvisi6ogfio4isfdaj6v81s.apps.googleusercontent.com"
+        data-context="signin"
+        data-ux_mode="popup"
+        data-login_uri="http://localhost:8081/api/auth/google"
+        data-auto_prompt="false">
+    </div>
+
+    <div id="buttonDiv" class="g_id_signin"
+        data-type="standard"
+        data-shape="pill"
+        data-theme="outline"
+        data-text="signin_with"
+        data-size="large"
+        data-locale="es"
+        data-logo_alignment="left">
+    </div> 
+
+    <div class="col-sm-6">
+        <h1>Login manual</h1>
+        <hr>
+
+        <form>
+            <input type="text" name="correo" class="form-control mb-2" placeholder="Correo"/>
+            <input type="text" name="password" class="form-control mb-2" placeholder="Password"/>
+
+            <button class="btn btn-primarty">
+                Ingresar
+            </button>
+        </form>
+
+
+    </div>
+
+
+
+
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <script src="./js/auth.js"></script>
+</body>
+</html>
