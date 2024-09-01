@@ -96,7 +96,7 @@ function signOut() {
 
 window.onload = function() {
   google.accounts.id.initialize({
-    client_id: '251330704353-dmkklc844rvisi6ogfio4isfdaj6v81s.apps.googleusercontent.com',
+    client_id: '857831824854-rpec20an6280ksdas30rivpumoqrfv3k.apps.googleusercontent.com',
     callback: handleCredentialResponse
   });
   google.accounts.id.renderButton(
