@@ -1,4 +1,6 @@
-const miFormulario = document.querySelector('form')
+
+const miFormulario = document.querySelector('form');
+
 
 // Retorna la URL según si está local o desplegado
 const url = window.location.hostname.includes('localhost')
@@ -6,32 +8,36 @@ const url = window.location.hostname.includes('localhost')
   : 'https://backend-basico-curso.onrender.com/api/auth/';
 
 
-miFormulario.addEventListener('submit', ev => {
-    //para evitar que el boton refresq el anvegador
+  miFormulario.addEventListener('submit', ev => {
     ev.preventDefault();
     const formData = {};
 
     for( let el of miFormulario.elements ) {
-        if ( el.name.length > 0 ) {
+        if ( el.name.length > 0 ) 
             formData[el.name] = el.value
-        }
     }
     
+    
     fetch( url + 'login', {
-      method: 'POST',
-      body: JSON.stringify( formData ),
-      headers: { 'Content-Type': 'application/json' }
+        method: 'POST',
+        body: JSON.stringify( formData ),
+        headers: { 'Content-Type': 'application/json' }
     })
-    .then( resp => resp.json())
-    .then(( {msg, token}) => {
-      if( msg ) {
-        return console.error( msg )
-      }
+    .then( resp => resp.json() )
+    .then( ({ msg, token }) => {
+        if( msg ){
+            return console.error( msg );
+        }
+
+        localStorage.setItem('token', token);
+        window.location = 'chat.html';
     })
     .catch( err => {
-      console.log(err)
+        console.log(err)
     })
-})
+});
+
+
 function handleCredentialResponse(response) {
   //const responsePayload = decodeJwtResponse(response.credential);
 

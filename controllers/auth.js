@@ -92,7 +92,21 @@ const googleIdentity = async (req = request, res = response) => {
     }
 }
 
+const validarTokenController = async( req, res = response) => {
+
+    const { usuario } = req;
+
+    //Generar el JWT
+    const token = await generarJWT(usuario.id);
+
+    res.json({
+        usuario,
+        token
+    })
+}
+
 module.exports = {
     login,
-    googleIdentity
+    googleIdentity,
+    validarTokenController
 }

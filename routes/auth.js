@@ -3,8 +3,8 @@ const { Router } = require('express');
 const { check } = require('express-validator');
 
 //Mis importaciones
-const { validarCampos } = require('../middlewares/validar_campos');
-const { login, googleIdentity } = require('../controllers/auth');
+const { validarCampos, validarJWT } = require('../middlewares/');
+const { login, googleIdentity, validarTokenController } = require('../controllers/auth');
 
 
 //Creacion del Router
@@ -25,6 +25,8 @@ router.post('/google',[
     validarCampos
 ], googleIdentity);
 
+//GET
+router.get( '/', validarJWT, validarTokenController );
 
 
-module.exports = router
+module.exports = router;
