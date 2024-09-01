@@ -39,12 +39,12 @@ const url = window.location.hostname.includes('localhost')
 
 
 function handleCredentialResponse(response) {
-  //const responsePayload = decodeJwtResponse(response.credential);
+  const responsePayload = decodeJwtResponse(response.credential);
 
-  //console.log('ID: ' + responsePayload.sub);
-  //console.log('Name: ' + responsePayload.name);
-  //console.log('Image URL: ' + responsePayload.picture);
-  //console.log('Email: ' + responsePayload.email);
+  console.log('ID: ' + responsePayload.sub);
+  console.log('Name: ' + responsePayload.name);
+  console.log('Image URL: ' + responsePayload.picture);
+  console.log('Email: ' + responsePayload.email);
 
   // Obtener token
   const idToken = response.credential;
