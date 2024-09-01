@@ -48,7 +48,6 @@ function handleCredentialResponse(response) {
 
   // Obtener token
   const idToken = response.credential;
-
   // Guardar el token en el almacenamiento local
   fetch(url + 'google', {
     method: 'POST',
