@@ -16,7 +16,7 @@ miFormulario.addEventListener('submit', ev => {
     
     fetch(url + 'login', {
         method: 'POST',
-        body: JSON.stringify(formData),
+        body: JSON.stringify( formData ),
         headers: { 'Content-Type': 'application/json' }
     })
     .then(resp => resp.json())
@@ -54,7 +54,7 @@ function handleCredentialResponse(response) {
         body: JSON.stringify({ idToken }),
     })
     .then(response => response.json())
- /*    .then(data => {
+    .then(data => {
         console.log('Mi server response: ', data);
         const token = data.token;
         if (token) {
@@ -63,7 +63,7 @@ function handleCredentialResponse(response) {
         } else {
             console.error('Token not found in the response');
         }
-    }) */
+    })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
     });
@@ -78,7 +78,8 @@ function handleCredentialResponse(response) {
 function decodeJwtResponse(token) {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function
+        (c) {
         return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
     }).join(''));
 
